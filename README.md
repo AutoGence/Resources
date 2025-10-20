@@ -1,5 +1,5 @@
 # AutoGence Resources
-
+ 
 > Official documentation, tutorials, and API references for AutoGence robotics products
 
 This repository powers [resources.autogence.ai](https://resources.autogence.ai) - the comprehensive documentation portal for Harfy humanoid robots, embodied AI components, and the AutoGence software platform.
