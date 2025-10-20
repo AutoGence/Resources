@@ -1,0 +1,50 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
+
+      - name: Deploy to server via SSH
+        uses: easingthemes/ssh-deploy@v4.1.10
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          SOURCE: "build/"
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          EXCLUDE: "/node_modules/, /.git/, /.github/"
+          SCRIPT_BEFORE: |
+            echo "Starting deployment..."
+            whoami
+            pwd
+          SCRIPT_AFTER: |
+            echo "Deployment completed!"
+            echo "Setting correct permissions..."
+            sudo chown -R www-data:www-data ${{ secrets.REMOTE_TARGET }}
+            sudo find ${{ secrets.REMOTE_TARGET }} -type d -exec chmod 755 {} \;
+            sudo find ${{ secrets.REMOTE_TARGET }} -type f -exec chmod 644 {} \;
+            echo "Reloading nginx..."
+            sudo nginx -t && sudo systemctl reload nginx
+            echo "Site deployed successfully at resources.autogence.ai"

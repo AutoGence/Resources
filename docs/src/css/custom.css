@@ -1,0 +1,153 @@
+/**
+ * AutoGence Resources - Custom Styles
+ * Branded styling for AutoGence documentation site
+ */
+
+/* Import Inter font to match main site */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* AutoGence Brand Colors */
+:root {
+  /* Primary: Electric Blue */
+  --ifm-color-primary: #0066ff;
+  --ifm-color-primary-dark: #0052cc;
+  --ifm-color-primary-darker: #004bb8;
+  --ifm-color-primary-darkest: #003d96;
+  --ifm-color-primary-light: #1a7aff;
+  --ifm-color-primary-lighter: #3d8dff;
+  --ifm-color-primary-lightest: #66a3ff;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  --ifm-code-font-size: 95%;
+
+  /* Background and text */
+  --ifm-background-color: #ffffff;
+  --ifm-color-content: #1a1a1a;
+  --ifm-color-content-secondary: #6b7280;
+
+  /* Code highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 102, 255, 0.1);
+
+  /* Border radius for modern look */
+  --ifm-border-radius: 8px;
+  --ifm-button-border-radius: 6px;
+}
+
+/* Dark mode with AutoGence colors */
+[data-theme='dark'] {
+  --ifm-color-primary: #3d8dff;
+  --ifm-color-primary-dark: #1a7aff;
+  --ifm-color-primary-darker: #0066ff;
+  --ifm-color-primary-darkest: #0052cc;
+  --ifm-color-primary-light: #5aa0ff;
+  --ifm-color-primary-lighter: #80b3ff;
+  --ifm-color-primary-lightest: #b3d1ff;
+
+  --ifm-background-color: #0f0f0f;
+  --ifm-color-content: #ffffff;
+  --ifm-color-content-secondary: #9ca3af;
+
+  --docusaurus-highlighted-code-line-bg: rgba(61, 141, 255, 0.15);
+}
+
+/* Custom navbar styling */
+.navbar {
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(15, 15, 15, 0.8);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Hero section styling for homepage */
+.hero {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, #ff6b35 100%);
+  color: white;
+}
+
+.hero__title {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.hero__subtitle {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Custom button styles */
+.button--primary {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+}
+
+.button--secondary {
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: transparent;
+  font-weight: 500;
+}
+
+.button--secondary:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Sidebar improvements */
+.theme-doc-sidebar-container {
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container {
+  border-right-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Code block improvements */
+.prism-code {
+  border-radius: var(--ifm-border-radius);
+}
+
+/* Table of contents */
+.table-of-contents {
+  border-left: 2px solid var(--ifm-color-primary-lightest);
+  padding-left: 1rem;
+}
+
+/* Admonitions (callouts) */
+.admonition {
+  border-radius: var(--ifm-border-radius);
+  border-left-width: 4px;
+}
+
+/* Footer */
+.footer {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+.footer__title {
+  color: #ffffff;
+}
+
+.footer__link-item {
+  color: #9ca3af;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-lightest);
+}
