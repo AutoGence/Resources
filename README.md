@@ -31,14 +31,12 @@ This site is built with [Docusaurus](https://docusaurus.io/), a modern static si
 ### Installation
 
 ```bash
-cd docs
 npm install
 ```
 
 ### Start Development Server
 
 ```bash
-cd docs
 npm start
 ```
 
@@ -47,16 +45,14 @@ This command starts a local development server at `http://localhost:3001` with h
 ### Build for Production
 
 ```bash
-cd docs
 npm run build
 ```
 
-This generates static content into the `docs/build/` directory that can be served by any static hosting service.
+This generates static content into the `build/` directory that can be served by any static hosting service.
 
 ### Preview Production Build
 
 ```bash
-cd docs
 npm run serve
 ```
 
@@ -65,7 +61,6 @@ Serves the production build locally at `http://localhost:3001` for testing.
 ### Clear Cache
 
 ```bash
-cd docs
 npm run clear
 ```
 
@@ -77,28 +72,26 @@ Clears Docusaurus cache and generated files. Useful for troubleshooting build is
 Resources/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml     # Automated deployment workflow
-├── docs/                  # Docusaurus project root
-│   ├── docs/             # Documentation content (Markdown/MDX)
-│   │   ├── harfy/        # Harfy robot documentation
-│   │   ├── components/   # Hardware component APIs
-│   │   ├── domain-controller/ # Domain controller setup
-│   │   ├── quick-start/  # Quick start guides
-│   │   ├── getting-started/ # Getting started content
-│   │   ├── hardware/     # Hardware documentation
-│   │   ├── software/     # Software documentation
-│   │   └── api/          # API references
-│   ├── blog/             # Blog posts and tutorials
-│   ├── src/
-│   │   ├── components/   # React components
-│   │   ├── css/         # Custom styles
-│   │   └── pages/       # Custom pages
-│   ├── static/          # Static assets (images, files)
-│   ├── docusaurus.config.js  # Site configuration
-│   ├── sidebars.js      # Sidebar navigation structure
-│   └── package.json     # Dependencies and scripts
-├── CLAUDE.md            # Guidance for Claude Code
-└── README.md            # This file
+│       └── deploy.yml        # Automated deployment workflow
+├── docs/                     # Documentation content (Markdown/MDX)
+│   ├── harfy/               # Harfy robot documentation
+│   ├── components/          # Hardware component APIs
+│   ├── domain-controller/   # Domain controller setup
+│   ├── quick-start/         # Quick start guides
+│   └── api/                 # API references
+├── blog/                    # Blog posts and tutorials
+├── src/
+│   ├── components/          # React components
+│   ├── css/                 # Custom styles
+│   └── pages/               # Custom pages
+├── static/                  # Static assets (images, files)
+├── docusaurus.config.js     # Site configuration
+├── sidebars.js              # Sidebar navigation structure
+├── package.json             # Dependencies and scripts
+├── CLAUDE.md                # Guidance for Claude Code
+├── CONTRIBUTING.md          # Contributing guidelines
+├── DEPLOYMENT.md            # Deployment documentation
+└── README.md                # This file
 ```
 
 ## Contributing
@@ -108,17 +101,16 @@ We welcome contributions to improve our documentation! Here's how you can help:
 1. **Fork the Repository**: Click the "Fork" button at the top right
 2. **Clone Your Fork**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/autogence-resources.git
-   cd autogence-resources
+   git clone https://github.com/YOUR_USERNAME/Resources.git
+   cd Resources
    ```
 3. **Create a Branch**:
    ```bash
    git checkout -b improve-docs
    ```
-4. **Make Your Changes**: Edit documentation files in the `docs/docs/` directory
+4. **Make Your Changes**: Edit documentation files in the `docs/` directory
 5. **Test Locally**:
    ```bash
-   cd docs
    npm start
    ```
 6. **Build to verify**:
@@ -137,11 +129,11 @@ We welcome contributions to improve our documentation! Here's how you can help:
 
 - Use clear, concise language
 - Include code examples where applicable
-- Add images/screenshots to illustrate complex concepts (place in `docs/static/img/`)
+- Add images/screenshots to illustrate complex concepts (place in `static/img/`)
 - Test all commands and code snippets
 - Follow the existing document structure and formatting
 - Use Markdown or MDX format
-- Update `docs/sidebars.js` when adding new pages
+- Update `sidebars.js` when adding new pages
 - Ensure builds succeed with `npm run build` before submitting PR
 
 ## Deployment
@@ -152,7 +144,7 @@ This site is automatically deployed to [resources.autogence.ai](https://resource
 
 1. Merge pull request to `main` branch
 2. GitHub Actions triggers build workflow
-3. Site is built using `npm run build` (from docs/ directory)
+3. Site is built using `npm run build`
 4. Static files are deployed to production server via SSH
 5. Site is live at resources.autogence.ai
 
