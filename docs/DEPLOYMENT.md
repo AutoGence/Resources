@@ -149,15 +149,18 @@ The deployment script needs to run certain commands with sudo. Add these to your
 sudo visudo -f /etc/sudoers.d/github-deploy
 ```
 
-Add these lines (replace `your-user` with your actual username):
+Add these lines (replace `your-user` with your actual username used for deployment):
 
 ```
+your-user ALL=(ALL) NOPASSWD: /usr/bin/chown -R your-user\:your-user /var/www/resources.autogence.ai*
 your-user ALL=(ALL) NOPASSWD: /usr/bin/chown -R www-data\:www-data /var/www/resources.autogence.ai*
 your-user ALL=(ALL) NOPASSWD: /usr/bin/find /var/www/resources.autogence.ai* -type d -exec chmod 755 {} \;
 your-user ALL=(ALL) NOPASSWD: /usr/bin/find /var/www/resources.autogence.ai* -type f -exec chmod 644 {} \;
 your-user ALL=(ALL) NOPASSWD: /usr/sbin/nginx -t
 your-user ALL=(ALL) NOPASSWD: /usr/bin/systemctl reload nginx
 ```
+
+**Note**: The first line allows the deploy user to take ownership before rsync, and the second line changes it back to www-data after deployment.
 
 Save and exit. Test it:
 ```bash

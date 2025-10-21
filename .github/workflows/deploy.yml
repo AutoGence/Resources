@@ -44,6 +44,8 @@ jobs:
             echo "Starting deployment..."
             whoami
             pwd
+            echo "Setting permissions for deployment..."
+            sudo chown -R $USER:$USER ${{ secrets.REMOTE_TARGET }}
           SCRIPT_AFTER: |
             echo "Deployment completed!"
             echo "Setting correct permissions..."

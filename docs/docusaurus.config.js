@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'autogence', // Usually your GitHub org/user name.
-  projectName: 'autogence-resources', // Usually your repo name.
+  organizationName: 'AutoGence', // Usually your GitHub org/user name.
+  projectName: 'Resources', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -50,7 +50,7 @@ const config = {
           sidebarPath: './sidebars.js',
           // Enable "Edit this page" links that point to GitHub
           editUrl:
-            'https://github.com/autogence/autogence-resources/tree/main/',
+            'https://github.com/AutoGence/Resources/tree/main/',
         },
         blog: {
           showReadingTime: true,
@@ -60,7 +60,7 @@ const config = {
           },
           // Enable "Edit this page" links that point to GitHub
           editUrl:
-            'https://github.com/autogence/autogence-resources/tree/main/',
+            'https://github.com/AutoGence/Resources/tree/main/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
