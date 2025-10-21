@@ -296,7 +296,7 @@ print(diagnostics.report)
 ethercat_status = controller.get_ethercat_status()
 print(f"EtherCAT state: {ethercat_status.state}")
 ```
-
+ 
 ## Examples
 
 See the [examples repository](https://github.com/autogence/actuator-examples) for complete code samples and tutorials.
