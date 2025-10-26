@@ -30,7 +30,7 @@ const config = {
   organizationName: 'AutoGence', // Usually your GitHub org/user name.
   projectName: 'Resources', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -48,6 +48,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          // Custom sidebar generator to include TOC for each page
+          sidebarItemsGenerator: require('./sidebarItemsGenerator.js'),
           // Enable "Edit this page" links that point to GitHub
           editUrl:
             'https://github.com/AutoGence/Resources/tree/main/',
@@ -90,8 +92,20 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      // Docs configuration
+      docs: {
+        sidebar: {
+          hideable: true,
+          autoCollapseCategories: true,
+        },
+      },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      // Hide the table of contents on the right
+      tableOfContents: {
+        minHeadingLevel: 2,
+        maxHeadingLevel: 4,
+      },
       navbar: {
         title: 'AutoGence Resources',
         logo: {

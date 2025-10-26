@@ -122,10 +122,18 @@
   border-radius: var(--ifm-border-radius);
 }
 
-/* Table of contents */
-.table-of-contents {
-  border-left: 2px solid var(--ifm-color-primary-lightest);
-  padding-left: 1rem;
+/* Hide the right sidebar table of contents */
+.theme-doc-toc-desktop {
+  display: none;
+}
+
+/* Adjust main doc content to use full width */
+.docMainContainer_gTbr {
+  max-width: 100%;
+}
+
+.docItemCol_VOVn {
+  max-width: 100% !important;
 }
 
 /* Admonitions (callouts) */
