@@ -48,8 +48,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Custom sidebar generator to include TOC for each page
-          sidebarItemsGenerator: require('./sidebarItemsGenerator.js'),
           // Enable "Edit this page" links that point to GitHub
           editUrl:
             'https://github.com/AutoGence/Resources/tree/main/',
