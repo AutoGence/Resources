@@ -99,7 +99,7 @@ const config = {
       },
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
-      // Hide the table of contents on the right
+      // Table of contents configuration (shown on right sidebar)
       tableOfContents: {
         minHeadingLevel: 2,
         maxHeadingLevel: 4,

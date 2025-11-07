@@ -122,20 +122,6 @@
   border-radius: var(--ifm-border-radius);
 }
 
-/* Hide the right sidebar table of contents */
-.theme-doc-toc-desktop {
-  display: none;
-}
-
-/* Adjust main doc content to use full width */
-.docMainContainer_gTbr {
-  max-width: 100%;
-}
-
-.docItemCol_VOVn {
-  max-width: 100% !important;
-}
-
 /* Admonitions (callouts) */
 .admonition {
   border-radius: var(--ifm-border-radius);
