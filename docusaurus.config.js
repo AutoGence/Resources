@@ -129,6 +129,11 @@ const config = {
             position: 'right',
           },
           {
+            to: '/harfy-services',
+            label: 'HARFY Services',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/autogence',
             label: 'GitHub',
             position: 'right',
