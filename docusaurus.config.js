@@ -191,7 +191,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} AutoGence, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AutoGence L.L.C. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
