@@ -161,9 +161,9 @@ For the deployment workflow to function, the following secrets must be configure
 
 ## License
 
-Copyright © 2025 AutoGence, Inc. All rights reserved.
+Copyright © 2025 AutoGence L.L.C. All rights reserved.
 
-This documentation is open-source and available for community contributions, but the AutoGence brand, logos, and product names are trademarks of AutoGence, Inc.
+This documentation is open-source and available for community contributions, but the AutoGence brand, logos, and product names are trademarks of AutoGence L.L.C.
 
 ## Community & Support
 
