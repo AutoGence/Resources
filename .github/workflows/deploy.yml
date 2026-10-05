@@ -1,10 +1,10 @@
-name: Deploy to Production
+name: Deploy to Cloudflare Workers
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:  # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -26,27 +26,29 @@ jobs:
       - name: Build Docusaurus site
         run: npm run build
 
-      - name: Deploy to server via SSH
-        uses: easingthemes/ssh-deploy@v4.1.10
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          SOURCE: "build/"
-          TARGET: ${{ secrets.REMOTE_TARGET }}
-          EXCLUDE: "/node_modules/, /.git/, /.github/"
-          SCRIPT_BEFORE: |
-            echo "Starting deployment..."
-            whoami
-            pwd
-            echo "Setting permissions for deployment..."
-            sudo chown -R $USER:$USER ${{ secrets.REMOTE_TARGET }}
-          SCRIPT_AFTER: |
-            echo "Deployment completed!"
-            echo "Setting correct permissions..."
-            sudo chown -R www-data:www-data ${{ secrets.REMOTE_TARGET }}
-            sudo find ${{ secrets.REMOTE_TARGET }} -type d -exec chmod 755 {} \;
-            sudo find ${{ secrets.REMOTE_TARGET }} -type f -exec chmod 644 {} \;
-            echo "Reloading nginx..."
-            sudo nginx -t && sudo systemctl reload nginx
-            echo "Site deployed successfully at resources.autogence.ai"
+      # Fail loudly rather than deploying an empty site. A Worker that
+      # publishes successfully with no assets is worse than a failed build.
+      - name: Verify build output
+        run: |
+          test -f build/index.html || { echo "::error::build/index.html missing"; exit 1; }
+          echo "built $(find build -type f | wc -l) files"
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # The Worker answers 200 for unknown paths (it reproduces nginx's
+      # try_files ... /index.html), so a status check cannot tell a live page
+      # from the fallback. Compare content instead.
+      - name: Verify the deploy reached the live site
+        run: |
+          sleep 10
+          curl -fsS https://resources.autogence.ai/            -o /tmp/home.html
+          curl -fsS https://resources.autogence.ai/docs/intro/ -o /tmp/page.html || true
+          if cmp -s /tmp/home.html /tmp/page.html; then
+            echo "::warning::/docs/intro/ is byte-identical to the homepage — that is the SPA fallback, not a deployed page"
+          fi
+          test -s /tmp/home.html || { echo "::error::homepage empty"; exit 1; }
+          echo "live site responded, $(stat -c%s /tmp/home.html) bytes"

@@ -1,0 +1,21 @@
+{
+  // Deploys resources.autogence.ai. Kept IN THIS REPO so CI can publish it —
+  // previously this file and worker/index.js lived only on the deploy host,
+  // which is why GitHub Actions could not deploy the Worker at all.
+  "name": "autogence-resources",
+  "compatibility_date": "2026-08-01",
+  "main": "worker/index.js",
+  "assets": {
+    // Docusaurus builds to ./build. (On the old host copy the Worker read
+    // ./public; that directory does not exist in this repo.)
+    "directory": "./build",
+    "binding": "ASSETS",
+    // Verbatim serving; the index and fallback halves are handled in
+    // worker/index.js so the original nginx behaviour is reproduced exactly.
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "routes": [
+    { "pattern": "resources.autogence.ai", "custom_domain": true }
+  ]
+}
